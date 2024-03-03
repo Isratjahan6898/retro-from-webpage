@@ -3,6 +3,7 @@ const loadCard = async() =>{
     const data = await res.json();
     const cards= data.posts;
     displayCard(cards);
+    displayTitle(cards);
 }
 
 
@@ -10,15 +11,15 @@ const displayCard = cards =>{
 
     cards.forEach(card => {
 
-        console.log(card);
+        //console.log(card);
          
         const cardContainer = document.getElementById('card-container');
 
         const showCard = document.createElement('div');
         showCard.classList=`card card-side mb-[16px] bg-[#F3F3F5] shadow-xl`;
         showCard.innerHTML=`<figure><div class="indicator">
-        <span class="indicator-item badge badge-secondary mt-[30px] mr-[10px]"></span> 
-        <div class="grid w-[72px] h-[72px] mt-[30px] ml-[30px] bg-base-300 place-items-center">  <img src="${card.image}" alt=""></div>
+        <span class="indicator-item badge badge-secondary mt-[30px] mr-[10px] ${card?.isActive===true? ' green':' red'}"></span> 
+        <div class="grid w-[72px] h-[72px] mt-[30px] ml-[30px] bg-base-300 place-items-center ">  <img src="${card.image}" alt=""></div>
       </div></figure>
       <div class="card-body">
 
@@ -61,6 +62,12 @@ const displayCard = cards =>{
      cardContainer.appendChild(showCard);
     });
 
+}
+
+
+const displayTitle = cards =>{
+    console.log(cards)
+    
 }
 
 
